@@ -1,0 +1,76 @@
+//continue  remove loop in linked list  lecture 38
+
+void removeLoop(Node listNode,Node loopNode)
+{
+  Node temp = loopNode;
+  while()//to increment list Node
+  {
+    while(loopNode.next= listNode.next&&loopNode!=temp)//to  increment loopNOde
+    {
+      loopNode= loopNode.next;
+    }
+    //it could have come out of inner loop because of 2 conditons
+    if(list Node.next ==loopNode.next)
+    {
+      loopNode.next = null;
+      return ;
+    }
+    listNode = listNode.next;//loop node completed one circle
+  }
+}
+
+
+//approach 3
+void removeLoop(Node listNode,Node loopNode)
+{
+  Node temp = loopNode;
+  int size = 1;
+  while(loopNode.next!=temp)//finding size of loop
+  {
+    loopNode = loopNode.next;
+    size++;
+  }
+  //size = size of loop;
+  Node slow = head;
+  Node fast = head;
+  for(int i=0;i<size;i++)
+  {
+    fast = fast.next;
+  }
+  //move them together till condition found
+  while(slow.next != fast.next){
+    slow = slow.next;
+    fast = fast.next;
+
+  }
+  fast.next = null;
+}
+
+//approach 3
+
+void detectAndRemoveLoop(Node head)
+{
+  if(head == null)return;
+  Node slow = head;
+  Node fast = head;
+  while(fast!==null&&fast.next!=null){
+    slow = slow.next;
+    fast = fast .next.next;
+    if(slow == fast)
+    {
+      break;
+    }
+    //can break of 2 reasons - either loop not found or loop found
+    if(slow == fast)
+    {
+      slow = head;
+      while(slow.next!=fast.next)
+      {
+        slow = slow .next;
+        fast = fast.next;
+      }
+      //this breaks when to the last element of loop
+      fast.next= null;
+    }
+  }
+}
